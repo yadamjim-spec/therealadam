@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The real Adam — in progress</title>
+<title>The real Adam</title>
 <meta name="description" content="Yury Adam — art direction & CG. Site in progress.">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,13 +20,17 @@
   .muted{color:#6B6B6B}
   .top,.bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
   .logo{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em;text-transform:none}
-  h1{margin:0;font-weight:900;font-size:clamp(64px,14vw,220px);line-height:.88;letter-spacing:-.03em;word-spacing:.04em}
+  h1{margin:0;font-weight:900;font-size:clamp(56px,12vw,180px);line-height:.88;letter-spacing:-.03em;word-spacing:.04em}
+  .nw{white-space:nowrap}
+  .badge{display:inline-block;width:.4em;height:.4em;margin-left:.1em;vertical-align:.02em;opacity:0;transform:scale(.4) rotate(-20deg);transition:opacity .35s ease,transform .45s cubic-bezier(.2,1.6,.4,1)}
+  .badge.on{opacity:1;transform:none}
+  .status{margin:clamp(24px,3vw,40px) 0 0;font-size:13px}
   .dots span{animation:blink 1.4s infinite both}
   .dots span:nth-child(2){animation-delay:.2s}
   .dots span:nth-child(3){animation-delay:.4s}
   .bottom{border-top:1px solid #E5E5E5;padding-top:18px}
   @keyframes blink{0%,80%,100%{opacity:.15}40%{opacity:1}}
-  @media (prefers-reduced-motion:reduce){.dots span{animation:none}}
+  @media (prefers-reduced-motion:reduce){.dots span{animation:none}.badge{transition:none}}
 </style>
 </head>
 <body>
@@ -36,7 +40,13 @@
     <span class="muted">therealadam.work</span>
   </header>
 
-  <h1>In progress<span class="dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></h1>
+  <section>
+    <h1>The real <span class="nw">Adam.<svg class="badge" id="badge" viewBox="0 0 24 24" role="img" aria-label="Verified">
+        <path fill="#2F6BFF" d="M12 1.5l2.6 1.9 3.2-.1 1 3.1 2.6 1.9-1 3.1 1 3.1-2.6 1.9-1 3.1-3.2-.1L12 22.5l-2.6-1.9-3.2.1-1-3.1-2.6-1.9 1-3.1-1-3.1 2.6-1.9 1-3.1 3.2.1z"/>
+        <path d="M7.6 12.3l3 3 5.8-6.2" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></span></h1>
+    <p class="status mono muted">In progress<span class="dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></p>
+  </section>
 
   <footer class="bottom mono">
     <span class="muted">Art direction &amp; CG</span>
@@ -44,5 +54,8 @@
     <a href="https://instagram.com/adamjim" target="_blank" rel="noopener">Instagram ↗</a>
   </footer>
 </main>
+<script>
+  setTimeout(function () { document.getElementById('badge').classList.add('on'); }, 600);
+</script>
 </body>
 </html>
