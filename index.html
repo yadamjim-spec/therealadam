@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The real Adam</title>
+<meta name="description" content="Yury Adam — art direction & CG. Verifying the real Adam. Site coming soon.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#FFFFFF;color:#0A0A0A}
+  body{font-family:'Inter Tight',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:hover{opacity:.6}
+  .page{min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(20px,3.4vw,48px)}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+  .muted{color:#6B6B6B}
+  .top,.bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
+  .logo{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em;text-transform:none}
+  h1{margin:0;font-weight:900;font-size:clamp(56px,12vw,180px);line-height:.88;letter-spacing:-.03em;word-spacing:.04em}
+  .nw{white-space:nowrap}
+  .badge{display:inline-block;width:.4em;height:.4em;margin-left:.1em;vertical-align:.02em;opacity:0;transform:scale(.4) rotate(-20deg);transition:opacity .35s ease,transform .45s cubic-bezier(.2,1.6,.4,1)}
+  .badge.on{opacity:1;transform:none}
+  .checks{list-style:none;margin:clamp(28px,4vw,56px) 0 0;padding:0;max-width:640px;font-size:13px}
+  .checks li{display:flex;align-items:baseline;gap:14px;padding:12px 0;border-top:1px solid #E5E5E5;opacity:.18;transition:opacity .3s ease}
+  .checks li:last-child{border-bottom:1px solid #E5E5E5}
+  .checks li.on{opacity:1}
+  .box{width:16px;flex:none;text-align:center}
+  .key{width:150px;flex:none;color:#6B6B6B}
+  .val{flex:1}
+  .spin{display:inline-block;animation:spin 1s steps(8) infinite}
+  .bottom{border-top:1px solid #E5E5E5;padding-top:18px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (max-width:520px){.key{width:110px}}
+  @media (prefers-reduced-motion:reduce){.spin{animation:none}.badge,.checks li{transition:none}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="top mono">
+    <span class="logo">The real Adam</span>
+    <span class="muted">therealadam.work</span>
+  </header>
+
+  <section>
+    <h1>The real <span class="nw">Adam.<svg class="badge" id="badge" viewBox="0 0 24 24" role="img" aria-label="Verified">
+        <path fill="#2F6BFF" d="M12 1.5l2.6 1.9 3.2-.1 1 3.1 2.6 1.9-1 3.1 1 3.1-2.6 1.9-1 3.1-3.2-.1L12 22.5l-2.6-1.9-3.2.1-1-3.1-2.6-1.9 1-3.1-1-3.1 2.6-1.9 1-3.1 3.2.1z"/>
+        <path d="M7.6 12.3l3 3 5.8-6.2" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></span></h1>
+
+    <ul class="checks mono" id="checks">
+      <li><span class="box">[ ]</span><span class="key">Real name</span><span class="val">Yury Adam</span></li>
+      <li><span class="box">[ ]</span><span class="key">Real job</span><span class="val">Art direction &amp; CG</span></li>
+      <li><span class="box">[ ]</span><span class="key">Before</span><span class="val">Co-founded CLAN</span></li>
+      <li><span class="box">[ ]</span><span class="key">Off-screen</span><span class="val">Bikes, wood, long roads</span></li>
+      <li><span class="box"><span class="spin" aria-hidden="true">/</span></span><span class="key">Real website</span><span class="val muted">Loading. Accept no imitations.</span></li>
+    </ul>
+  </section>
+
+  <footer class="bottom mono">
+    <span class="muted">Art direction &amp; CG</span>
+    <a href="mailto:hi@adamdidthis.com">hi@adamdidthis.com</a>
+    <a href="https://instagram.com/adamjim" target="_blank" rel="noopener">Instagram ↗</a>
+  </footer>
+</main>
+<script>
+  (function () {
+    var items = document.querySelectorAll('#checks li');
+    var badge = document.getElementById('badge');
+    var i = 0;
+    function next() {
+      if (i < items.length - 1) {
+        items[i].classList.add('on');
+        items[i].querySelector('.box').textContent = '[✓]';
+        i++;
+        setTimeout(next, 650);
+      } else {
+        items[i].classList.add('on');
+        setTimeout(function () { badge.classList.add('on'); }, 300);
+      }
+    }
+    setTimeout(next, 700);
+  })();
+</script>
+</body>
+</html>
